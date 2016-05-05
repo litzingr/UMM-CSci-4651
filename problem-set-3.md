@@ -1,21 +1,7 @@
+This is problem set 3 for CSci 4651. During this problem set, I worked with Thomas Hagen, Henry Fellows, Peter Hanson, and Jack Lynch for different parts of the assignment.
+
 # Problem 1
 #### Fragment 1:
-
-```cpp
-int main() {
-  B b1;
-  B b2;
-
-  method1(b1, b2);
-  b1.print();
-  b2.print();
-
-  method2(&b1, &b2);
-  b1.print();
-  b2.print();
-
-}
-```
 
 In method1, we take an object a1 and a2 of type A. This means we can pass objects of type B as well as B is a subtype of A.
 
@@ -97,8 +83,6 @@ bptr2 -> print(); // prints x = 2 y = 0.
 ```
 
 This is what we expect to print as they are using the print function of type B and our swap changed the pointers and thus updated our values.
-
-***
 
 # Problem 2
 For these questions, I go through each assignment in order. For reference, they are numbered:
@@ -299,4 +283,14 @@ class OurGame : public MultiPlayer, public CardGame, public BoardGame, public Sc
 We get less of a hierarchy here than with Java as we are not dealing with abstract classes / interfaces. We just have *SinglePlayer* and *MultiPlayer* which extends our master *Game* class. The rest of them do not need to extend our *Game* class because when we make our game, we will always have either *SinglePlayer* or *MultiPlayer*.
 
 # Problem 4
-I implemented this OrderedList using Eclipse and Java 8. The files can be found in this GitHub repository.
+I implemented this OrderedList using Eclipse and Java 8. The files can be found in this GitHub repository. I have written a good amount of JUnit tests for testing my implementation. For example, an ordered linked list of integers:
+
+```java
+OrderedList<Integer> list = new OrderedList<>();
+list.add(3); // adds 3
+list.get(0); // gets value at list position 0, in our case, 3.
+list.isEmpty(); // checks if empty. returns false here.
+list.size(); // returns 1 here
+```
+
+Please see the JUnit tests for examples on how to use *map* and *filter*.
