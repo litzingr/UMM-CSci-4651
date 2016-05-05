@@ -154,19 +154,19 @@ For this, I tried different assignments for each call.
 
 6. Here is the most compilcated: we are combining a circle and a square. We can see that we can only assign this as a variable of type Shape because our resulting object is a Shape and not a subtype of Shape.
 
-```java
-Shape s = c1.combine(sq1); // compiles and runs fine
-Circle c = c1.combine(sq1); // error at compile time
-Square sq = c1.combine(sq1); // error at compile time
-Circle cc = (Circle) c1.combine(sq1); // error at run time
-Square sqq = (Square) c1.combine(sq1); // error at run time
-```
+  ```java
+  Shape s = c1.combine(sq1); // compiles and runs fine
+  Circle c = c1.combine(sq1); // error at compile time
+  Square sq = c1.combine(sq1); // error at compile time
+  Circle cc = (Circle) c1.combine(sq1); // error at run time
+  Square sqq = (Square) c1.combine(sq1); // error at run time
+  ```
 
-* The first line compiles and runs fine as we are assigning the result (a Shape) to a variable of type Shape.
-* The second line will throw an error at compile time because we are trying to assign a Shape to a variable of type Circle. Shape is not a subtype of Circle.
-* The third line will throw an error at compile time because we are trying to assign a Shape to a variable of type Square. Shape is not a subtype of Square.
-* The fourth line will compile as we are casting Circle and assigning it to a variable of type Circle. It will fail at run time, however, as we cannot cast a Shape to a Circle because Shape is not a subtype of Circle.
-* The fifth line will compile as we are casting Square and assigning it to a variable of type Square. It will fail at run time, however, as we cannot cast a Shape to a Square because Shape is not a subtype of Square.
+  * The first line compiles and runs fine as we are assigning the result (a Shape) to a variable of type Shape.
+  * The second line will throw an error at compile time because we are trying to assign a Shape to a variable of type Circle. Shape is not a subtype of Circle.
+  * The third line will throw an error at compile time because we are trying to assign a Shape to a variable of type Square. Shape is not a subtype of Square.
+  * The fourth line will compile as we are casting Circle and assigning it to a variable of type Circle. It will fail at run time, however, as we cannot cast a Shape to a Circle because Shape is not a subtype of Circle.
+  * The fifth line will compile as we are casting Square and assigning it to a variable of type Square. It will fail at run time, however, as we cannot cast a Shape to a Square because Shape is not a subtype of Square.
 
 These decisions make sense in Java because we do not want to be able to assign variables of a certain type to a different type that is not a subtype of that type. For example, we cannot assign a Shape to a type Square because we cannot guarantee that this shape is for sure a square. We do want it to compile when we cast it, such as casting a Shape to be a square and assigning it to a variable of type square. This makes sense as the compiling just wants to check types and not if it will actually run fine. By casting, we are saying it is okay for this to compile as we are casting this object to be this type.
 
