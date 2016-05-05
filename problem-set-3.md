@@ -106,50 +106,51 @@ After running the code, I can see that my predictions were correct. The only one
 
 #### Question 2:
 For this, I tried different assignments for each call.
+
 1. We are trying to combine a shape and a square that is cast as a shape. Thus, we can easily assign this to a new shape:
 
-```java
-Shape s = s1.combine(s2); // this compiles and runs fine
-Square sq = s1.combine(s2); // error in Eclipse / compile time
-Square sqq = (Square) s1.combine(s2); // compiles, error at run time
-```
-
-* The first line compiles and runs fine as we are combining a shape and a square and assigning it to a variable of type Shape.
-* The second one gives an error right away in Eclipse, before even compiling, as we cannot convert type Shape to Square. Thus it will break while compiling.
-* The third one does not raise an error in Eclipse and will compile but will throw an error at run time because we cannot cast a Shape to a Square as Shape is not a subtype of Square.
+  ```java
+  Shape s = s1.combine(s2); // this compiles and runs fine
+  Square sq = s1.combine(s2); // error in Eclipse / compile time
+  Square sqq = (Square) s1.combine(s2); // compiles, error at run time
+  ```
+  
+  * The first line compiles and runs fine as we are combining a shape and a square and assigning it to a variable of type Shape.
+  * The second one gives an error right away in Eclipse, before even compiling, as we cannot convert type Shape to Square. Thus it will break while compiling.
+  * The third one does not raise an error in Eclipse and will compile but will throw an error at run time because we cannot cast a Shape to a Square as Shape is not a subtype of Square.
 
 2. This is almost the exact same as number 1. This time we are passing a Shape to the combine function, which means we call the combine function of Shape. Thus, we will get a shape and we have similar results to part 1, we will only be able to assign it to a variable of type Shape.
 
 3. Here, we are passing a shape (s1) to the combine function of a Square. This will use the combine function of Shape, however, as we are passing a shape. We can only assign this to a variable of type Shape then.
 
-```java
-Shape s = sq1.combine(s1); // compiles and runs fine
-Square sq = sq1.combine(s1); // error at compile time
-Square sqq = (Square) sq1.combine(s1); // error at run time
-```
+  ```java
+  Shape s = sq1.combine(s1); // compiles and runs fine
+  Square sq = sq1.combine(s1); // error at compile time
+  Square sqq = (Square) sq1.combine(s1); // error at run time
+  ```
 
-This is similar to number 1. We get an error at compile time for the second line because we cannot assign a type Shape to Square. When we cast it in line 3, we are allowed to compile, but it will break during run time when we try to cast a Shape to type Square because Shape is not a subtype of Square.
+  This is similar to number 1. We get an error at compile time for the second line because we cannot assign a type Shape to Square. When we cast it in line 3, we are allowed to compile, but it will break during run time when we try to cast a Shape to type Square because Shape is not a subtype of Square.
 
 4. Here we are combing two squares (specifically, one square with itself).
 
-```java
-Shape s = sq1.combine(sq1); // compiles and runs fine
-Square sq = sq1.combine(sq1); // compiles and runs fine
-```
+  ```java
+  Shape s = sq1.combine(sq1); // compiles and runs fine
+  Square sq = sq1.combine(sq1); // compiles and runs fine
+  ```
 
-As this combine uses the Square combine function, the resulting shape is a Square. Thus, we can assign this result to a Square as in line 2 or also a Shape in line 1 as a Square is a subtype of Shape.
+  As this combine uses the Square combine function, the resulting shape is a Square. Thus, we can assign this result to a Square as in line 2 or also a Shape in line 1 as a Square is a subtype of Shape.
 
 5. Here we are passing a shape to the combine function of a circle. This is very similar to number 3. Because we are passing a shape, we actually use the combine function of Shape.
 
-```java
-Shape s = c1.combine(s1); // compiles and runs fine
-Circle c = c1.combine(s1); // breaks at compile time
-Circle cc = (Circle) c1.combine(s1); // compiles fine but breaks at run time
-```
+  ```java
+  Shape s = c1.combine(s1); // compiles and runs fine
+  Circle c = c1.combine(s1); // breaks at compile time
+  Circle cc = (Circle) c1.combine(s1); // compiles fine but breaks at run time
+  ```
 
-* The first line compiles and runs fine as we are creating a shape by combining a circle with a shape and assigning it to a variable of type Shape.
-* The second line will not compile as we are trying to assign a Shape to a type Circle, which we cannot do because Shape is not a subtype of Circle.
-* The third line will compile as we are casting our Shape to a Circle, but will break at run time as we actually cannot cast a Shape to a Circle.
+  * The first line compiles and runs fine as we are creating a shape by combining a circle with a shape and assigning it to a variable of type Shape.
+  * The second line will not compile as we are trying to assign a Shape to a type Circle, which we cannot do because Shape is not a subtype of Circle.
+  * The third line will compile as we are casting our Shape to a Circle, but will break at run time as we actually cannot cast a Shape to a Circle.
 
 6. Here is the most compilcated: we are combining a circle and a square. We can see that we can only assign this as a variable of type Shape because our resulting object is a Shape and not a subtype of Shape.
 
